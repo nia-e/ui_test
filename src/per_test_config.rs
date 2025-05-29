@@ -375,6 +375,7 @@ impl TestConfig {
 
         let mut cmd = self.build_command(build_manager)?;
         cmd.stdout(std::process::Stdio::inherit());
+        cmd.stderr(std::process::Stdio::inherit());
         let stdin = self.status.path().with_extension(self.extension("stdin"));
         if stdin.exists() {
             cmd.stdin(std::fs::File::open(stdin).unwrap());
